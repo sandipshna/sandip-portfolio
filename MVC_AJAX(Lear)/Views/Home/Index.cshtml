@@ -1,0 +1,198 @@
+@model MVC_AJAX_Lear_.Models.PortfolioViewModel
+@{
+    ViewData["Title"] = "Sandip Surati - Backend Developer";
+}
+
+<!-- Hero Section -->
+<section class="hero text-white">
+    <div class="container text-center hero-content">
+        <h1 class="display-3 fw-bold mb-4">@Model.Name</h1>
+        <p class="lead fs-4 mb-3">@Model.Title</p>
+        <p class="mb-4 floating"><i class="fas fa-map-marker-alt me-2"></i> @Model.Location | <i class="fas fa-phone ms-3 me-2"></i> @Model.Phone</p>
+        <div class="mt-5">
+            <a href="#about" class="btn btn-light btn-lg me-3 floating">Explore Portfolio</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg floating">Get In Touch</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5" style="scroll-margin-top: 200px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h2 class="text-center mb-4">Professional Summary</h2>
+                <p class="lead text-center">@Model.About</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Technical Skills</h2>
+        <div class="row justify-content-center">
+            @foreach (var skill in Model.Skills)
+            {
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3 skill-item">
+                    <span class="badge bg-primary p-3 w-100 floating">@skill</span>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Professional Experience</h2>
+        <div class="row justify-content-center">
+            @foreach (var exp in Model.Experiences)
+            {
+                <div class="col-lg-8 col-md-10">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h4 class="text-primary mb-1">@exp.Position</h4>
+                                    <h5 class="text-muted mb-1">@exp.Company</h5>
+                                    <small class="text-info"><i class="fas fa-map-marker-alt"></i> @exp.Location</small>
+                                </div>
+                                <span class="badge bg-secondary p-2">@exp.Duration</span>
+                            </div>
+                            <p class="mb-3">@exp.Description</p>
+                            <div class="experience-highlights">
+                                <small class="text-muted d-block mb-2"><strong>Key Achievements:</strong></small>
+                                <ul class="small mb-0">
+                                    <li>Successfully delivered multiple software products tailored to business needs</li>
+                                    <li>Collaborated with cross-functional teams to implement scalable solutions</li>
+                                    <li>Optimized system performance and improved reliability through code optimization</li>
+                                    <li>Troubleshot critical issues and streamlined backend workflows</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Project Portfolio</h2>
+        <div class="row">
+            @foreach (var project in Model.Projects)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="text-primary mb-0">@project.Title</h5>
+                                <span class="badge bg-info">@project.Duration</span>
+                            </div>
+                            <p class="mb-3">@project.Description</p>
+                            <div class="mb-3">
+                                <small class="text-muted d-block mb-2"><strong>Technologies:</strong></small>
+                                <div class="tech-tags">
+                                    @foreach (var tech in project.TechStack.Split(',').Take(6))
+                                    {
+                                        <span class="badge bg-secondary me-1 mb-1">@tech.Trim()</span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <small class="text-muted d-block mb-2"><strong>Key Implementations:</strong></small>
+                                <ul class="small mb-0 implementation-list">
+                                    @foreach (var implementation in project.Implementations.Take(4))
+                                    {
+                                        <li class="mb-1">@implementation</li>
+                                    }
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Education</h2>
+        <div class="row justify-content-center">
+            @foreach (var edu in Model.Education)
+            {
+                <div class="col-lg-5 col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <h5 class="text-primary mb-2">@edu.Degree</h5>
+                                <h6 class="text-muted mb-2">@edu.Institution</h6>
+                                <p class="mb-2"><i class="fas fa-map-marker-alt"></i> @edu.Location</p>
+                                <span class="badge bg-secondary p-2">@edu.Duration</span>
+                            </div>
+                            <div class="education-details">
+                                <small class="text-muted d-block mb-2"><strong>Focus Areas:</strong></small>
+                                <ul class="small mb-0">
+                                    @if (edu.Degree.Contains("M.C.A"))
+                                    {
+                                        <li>Advanced Software Development</li>
+                                        <li>Database Management Systems</li>
+                                        <li>Web Technologies & Frameworks</li>
+                                        <li>System Analysis & Design</li>
+                                    }
+                                    else
+                                    {
+                                        <li>Computer Programming Fundamentals</li>
+                                        <li>Database Concepts</li>
+                                        <li>Web Development Basics</li>
+                                        <li>Software Engineering Principles</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-dark text-white">
+    <div class="container text-center">
+        <h2 class="mb-4">Let's Connect</h2>
+        <p class="lead mb-4">Ready to collaborate on your next project!</p>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <i class="fas fa-envelope fa-2x mb-2"></i>
+                        <p><strong>Email:</strong><br>@Model.Email</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <i class="fas fa-phone fa-2x mb-2"></i>
+                        <p><strong>Phone:</strong><br>@Model.Phone</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    @if (!string.IsNullOrEmpty(Model.LinkedIn))
+                    {
+                        <a href="@Model.LinkedIn" class="btn btn-outline-light btn-lg me-3" target="_blank">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                    }
+                    <a href="mailto:@Model.Email" class="btn btn-light btn-lg">
+                        <i class="fas fa-envelope"></i> Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
