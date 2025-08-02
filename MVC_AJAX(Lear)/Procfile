@@ -1,0 +1,1 @@
+web: dotnet "./MVC_AJAX(Lear).dll"
