@@ -12,8 +12,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// Configure port for Railway
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+// Configure for Railway
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
 app.Urls.Add($"http://0.0.0.0:{port}");
 
 if (app.Environment.IsDevelopment())
