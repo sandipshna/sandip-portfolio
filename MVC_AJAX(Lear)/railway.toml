@@ -2,7 +2,7 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "dotnet 'MVC_AJAX(Lear).dll'"
+startCommand = "dotnet SandipPortfolio.dll"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"

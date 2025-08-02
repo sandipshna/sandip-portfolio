@@ -1,1 +1,1 @@
-web: dotnet "./MVC_AJAX(Lear).dll"
+web: dotnet SandipPortfolio.dll

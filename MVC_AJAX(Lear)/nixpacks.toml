@@ -5,4 +5,4 @@ nixPkgs = ['...', 'dotnet-sdk_6']
 cmds = ['dotnet publish --configuration Release --output out']
 
 [start]
-cmd = 'dotnet ./out/MVC_AJAX\\(Lear\\).dll'
+cmd = 'dotnet ./out/SandipPortfolio.dll'

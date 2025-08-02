@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>MVC_AJAX_Lear_</RootNamespace>
+    <AssemblyName>SandipPortfolio</AssemblyName>
   </PropertyGroup>
 
 </Project>
